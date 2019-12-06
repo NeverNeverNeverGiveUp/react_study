@@ -1,11 +1,20 @@
 import React, { Component,Fragment } from 'react';
  
 export class xiaojiejie extends Component {
+   constructor(props, context) {
+       super(props, context);
+       this.state={
+        inputValue:'input中的值' , // input中的值
+        list:[]    //服务列表
+       }
+   }
+   
+
     render() {
         return (
             <Fragment>
                 <div>
-                    <input/>
+                    <input value={this.state.inputValue} onChange={this.inputChange.bind(this)}/>
                     <button>增加服务</button>
                 </div>
                 <ul>
@@ -15,6 +24,13 @@ export class xiaojiejie extends Component {
                 </ul>
             </Fragment>
         );
+    }
+
+    inputChange(e){
+        console.log(e.target.value,"哈哈");
+        this.setState({
+            inputValue:e.target.value
+        })
     }
 }
 
