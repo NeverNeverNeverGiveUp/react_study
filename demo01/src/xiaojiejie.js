@@ -5,7 +5,7 @@ export class xiaojiejie extends Component {
        super(props, context);
        this.state={
         inputValue:'input中的值' , // input中的值
-        list:[]    //服务列表
+        list:["服务1","服务2"]    //服务列表
        }
    }
    
@@ -15,12 +15,14 @@ export class xiaojiejie extends Component {
             <Fragment>
                 <div>
                     <input value={this.state.inputValue} onChange={this.inputChange.bind(this)}/>
-                    <button>增加服务</button>
+                    <button onClick={this.addList.bind(this)}>增加服务</button>
                 </div>
                 <ul>
-                    <li>服务1</li>
-                    <li>服务2</li>
-                    <li>服务3</li>
+                   {
+                       this.state.list.map((item,index)=>{
+                           return (<li key={index+Math.random()} onClick={this.deleteItem.bind(this,index)}>{item}</li>)
+                       })
+                   }
                 </ul>
             </Fragment>
         );
@@ -31,6 +33,22 @@ export class xiaojiejie extends Component {
         this.setState({
             inputValue:e.target.value
         })
+    }
+    addList(){
+        this.setState({
+            list:[...this.state.list,this.state.inputValue]
+        })
+    }
+    deleteItem(index){
+        console.log(index);
+        let list=[...this.state.list];
+        // let list =JSON.parse(JSON.stringify(this.state.list));
+        list.splice(index,1);
+        this.setState({
+            list:list
+        })
+        
+
     }
 }
 
