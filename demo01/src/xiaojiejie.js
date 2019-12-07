@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from "react";
 import "./style.css";
+
+import XiaojiejieItem from './XiaojiejieItem';
 export class xiaojiejie extends Component {
   constructor(props, context) {
     super(props, context);
@@ -12,10 +14,10 @@ export class xiaojiejie extends Component {
   render() {
     return (
       <Fragment>
-        {" "}
+        
         {
           // 哈哈
-        }{" "}
+        }
         <div>
           <label htmlFor="jspang">加入服务：</label>
           <input
@@ -23,21 +25,27 @@ export class xiaojiejie extends Component {
             id="jspang"
             value={this.state.inputValue}
             onChange={this.inputChange.bind(this)}
-          />{" "}
-          <button onClick={this.addList.bind(this)}> 增加服务 </button>{" "}
-        </div>{" "}
+          />
+          <button onClick={this.addList.bind(this)}> 增加服务 </button>
+        </div>
         <ul>
-          {" "}
+          
           {this.state.list.map((item, index) => {
             return (
-              <li
+            
+
+             <div>
+              {/* <li
                 key={index + Math.random()}
                 dangerouslySetInnerHTML={{ __html: item }}
                 onClick={this.deleteItem.bind(this, index)}
               ></li>
+             */}
+             <XiaojiejieItem />
+             </div>
             );
-          })}{" "}
-        </ul>{" "}
+          })}
+        </ul>
       </Fragment>
     );
   }
