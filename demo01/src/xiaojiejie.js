@@ -7,7 +7,7 @@ export class xiaojiejie extends Component {
     super(props, context);
     this.state = {
       inputValue: "", // input中的值
-      list: ["服务1", "服务2"] //服务列表
+      list: ["服务1", "服务22"] //服务列表
     };
   }
 
@@ -34,14 +34,14 @@ export class xiaojiejie extends Component {
             return (
             
 
-             <div>
+             <div key={index + Math.random()}>
               {/* <li
                 key={index + Math.random()}
                 dangerouslySetInnerHTML={{ __html: item }}
                 onClick={this.deleteItem.bind(this, index)}
               ></li>
              */}
-             <XiaojiejieItem />
+             <XiaojiejieItem content={item} index={index} deleteItem={this.deleteItem.bind(this)}/>
              </div>
             );
           })}
