@@ -22,6 +22,12 @@ optionalSymbol: PropTypes.symbol,
 Markdown基本语法:
 https://www.jianshu.com/p/191d1e21f7ed
 
+npm install -save 和 -save-dev的区别：
+npm install xxx: 安装项目到项目目录下，不会将模块依赖写入devDependencies或dependencies。
+npm install -g xxx: -g的意思是将模块安装到全局，具体安装到磁盘哪个位置，要看 npm cinfig prefix的位置
+npm install -save xxx：-save的意思是将模块安装到项目目录下，并在package文件的dependencies节点写入依赖。
+npm install -save-dev xxx：-save-dev的意思是将模块安装到项目目录下，并在package文件的devDependencies节点写入依赖。
+
 
 【遗留问题】：
 1、20节的声明周期中，componentWillReceiveProps在子组件中误触发，原因是最新的react中废弃了，换成最新的static getDerivedStateFromProps，报错：`getDerivedStateFromProps` but its initial state is undefined. This is not recommended. Instead, define the initial state by assigning an object to `this.state` in the constructor of `XiaojiejieItem`. This ensures that `getDerivedStateFromProps` arguments have a consistent shape.

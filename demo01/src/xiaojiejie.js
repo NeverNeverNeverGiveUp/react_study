@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import "./style.css";
+import axios from 'axios';
 
 import XiaojiejieItem from './XiaojiejieItem';
 export class xiaojiejie extends Component {
@@ -58,6 +59,14 @@ export class xiaojiejie extends Component {
   
   componentDidMount(){
     // console.log('componentDidMount----组件挂载完成的时刻执行')
+    // 请求数据的阶段：
+    axios.post("https://web-api.juejin.im/v3/web/wbbr/bgeda").then(res=>{
+      console.log('axios 获取数据成功:',res);
+
+    }).catch(err=>{
+      console.log('axios 获取数据失败:',err);
+      
+    })
   }
   shouldComponentUpdate(){
     // console.log('1-shouldComponentUpdate---组件发生改变前执行')
