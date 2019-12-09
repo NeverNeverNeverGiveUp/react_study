@@ -13,10 +13,10 @@ export class xiaojiejie extends Component {
   }
   UNSAFE_componentWillMount(){
     
-    console.log('componentWillMount----组件将要挂载到页面的时刻')
+    // console.log('componentWillMount----组件将要挂载到页面的时刻')
   }
   render() {
-    console.log('3-render---组件挂载中.......')
+    console.log('【父组件】3-render---组件挂载中.......')
     return (
       <Fragment>
         
@@ -57,20 +57,20 @@ export class xiaojiejie extends Component {
   }
   
   componentDidMount(){
-    console.log('componentDidMount----组件挂载完成的时刻执行')
+    // console.log('componentDidMount----组件挂载完成的时刻执行')
   }
   shouldComponentUpdate(){
-    console.log('1-shouldComponentUpdate---组件发生改变前执行')
+    // console.log('1-shouldComponentUpdate---组件发生改变前执行')
     // 它要求返回一个布尔类型的结果，必须有返回值，这里就直接返回一个true了（真实开发中，这个是有大作用的）。
     return true
   }
   //shouldComponentUpdate返回true才会被执行。
   UNSAFE_componentWillUpdate(){
-    console.log('2-componentWillUpdate---组件更新前，shouldComponentUpdate函数之后执行')
+    // console.log('2-componentWillUpdate---组件更新前，shouldComponentUpdate函数之后执行')
   }
 
   componentDidUpdate(){
-    console.log('4-componentDidUpdate----组件更新之后执行')
+    // console.log('4-componentDidUpdate----组件更新之后执行')
   }
 
   // componentWillReceiveProps(){
@@ -80,23 +80,24 @@ export class xiaojiejie extends Component {
 
 
   inputChange(e) {
-    console.log("input改变的时候",e.target.value );
+    // console.log("input改变的时候",e.target.value );
     this.setState({
       inputValue: this.input.value
     });
   }
   addList() {
-    // let list=JSON.parse(JSON.stringify([...this.state.list, this.state.inputValue]))
+    let list=[...this.state.list];
+    list[0]=this.state.inputValue;
     this.setState({
-      list: [...this.state.list, this.state.inputValue]
+      list: list
     },()=>{
       console.log(this.ul.querySelectorAll("div").length);
     });
 
     // this.state.fileName
-    this.setState({
-      fileName:"《爱有来生》"+Math.random()
-    })
+    // this.setState({
+    //   fileName:"《爱有来生》"+Math.random()
+    // })
 
   }
   deleteItem(index) {
