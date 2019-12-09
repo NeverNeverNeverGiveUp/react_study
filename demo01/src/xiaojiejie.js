@@ -10,8 +10,12 @@ export class xiaojiejie extends Component {
       list: ["服务1", "服务22"] //服务列表
     };
   }
-
+  componentWillMount(){
+    
+    console.log('componentWillMount----组件将要挂载到页面的时刻')
+  }
   render() {
+    console.log('render---组件挂载中.......')
     return (
       <Fragment>
         
@@ -50,6 +54,14 @@ export class xiaojiejie extends Component {
       </Fragment>
     );
   }
+  
+  componentDidMount(){
+    console.log('componentDidMount----组件挂载完成的时刻执行')
+  }
+
+
+
+
 
   inputChange(e) {
     console.log(e.target.value, "哈哈");
