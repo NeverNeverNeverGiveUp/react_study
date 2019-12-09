@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class XiaojiejieItem extends Component {
     constructor(props) {
@@ -9,6 +10,8 @@ export class XiaojiejieItem extends Component {
         return (
             <div onClick={this.handleClick} >
                 {this.props.content}
+                {this.props.fileName}
+
             </div>
         );
     }
@@ -20,6 +23,18 @@ export class XiaojiejieItem extends Component {
         this.props.deleteItem(this.props.index);
         
     }
+}
+
+// 设置参数类型和是否必填
+XiaojiejieItem.propTypes={
+    content:PropTypes.string,
+    index:PropTypes.number,
+    deleteItem:PropTypes.func,
+    fileName:PropTypes.string.isRequired
+}
+// 设置参数默认值
+XiaojiejieItem.defaultProps={
+    fileName:"美国往事" 
 }
 
 export default XiaojiejieItem;

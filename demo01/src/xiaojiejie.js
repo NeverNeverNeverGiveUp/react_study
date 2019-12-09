@@ -41,7 +41,7 @@ export class xiaojiejie extends Component {
                 onClick={this.deleteItem.bind(this, index)}
               ></li>
              */}
-             <XiaojiejieItem content={item} index={index} deleteItem={this.deleteItem.bind(this)}/>
+             <XiaojiejieItem content={item} index={index} deleteItem={this.deleteItem.bind(this)} fileName={"阿甘正传"}/>
              </div>
             );
           })}
