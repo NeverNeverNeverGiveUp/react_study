@@ -22,3 +22,7 @@ optionalSymbol: PropTypes.symbol,
 Markdown基本语法:
 https://www.jianshu.com/p/191d1e21f7ed
 
+
+【遗留问题】：
+1、20节的声明周期中，componentWillReceiveProps在子组件中误触发，原因是最新的react中废弃了，换成最新的static getDerivedStateFromProps，报错：`getDerivedStateFromProps` but its initial state is undefined. This is not recommended. Instead, define the initial state by assigning an object to `this.state` in the constructor of `XiaojiejieItem`. This ensures that `getDerivedStateFromProps` arguments have a consistent shape.
+

@@ -7,15 +7,16 @@ export class xiaojiejie extends Component {
     super(props, context);
     this.state = {
       inputValue: "", // input中的值
-      list: ["服务1", "服务22"] //服务列表
+      list: ["服务1", "服务22"] ,//服务列表
+      fileName:"《爱有来生》"
     };
   }
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     
     console.log('componentWillMount----组件将要挂载到页面的时刻')
   }
   render() {
-    console.log('render---组件挂载中.......')
+    console.log('3-render---组件挂载中.......')
     return (
       <Fragment>
         
@@ -46,7 +47,7 @@ export class xiaojiejie extends Component {
                 onClick={this.deleteItem.bind(this, index)}
               ></li>
              */}
-             <XiaojiejieItem content={item} index={index} deleteItem={this.deleteItem.bind(this)} fileName={"阿甘正传"}/>
+             <XiaojiejieItem content={item} index={index} deleteItem={this.deleteItem.bind(this)} fileName={this.state.fileName}/>
              </Fragment>
             );
           })}
@@ -58,23 +59,44 @@ export class xiaojiejie extends Component {
   componentDidMount(){
     console.log('componentDidMount----组件挂载完成的时刻执行')
   }
+  shouldComponentUpdate(){
+    console.log('1-shouldComponentUpdate---组件发生改变前执行')
+    // 它要求返回一个布尔类型的结果，必须有返回值，这里就直接返回一个true了（真实开发中，这个是有大作用的）。
+    return true
+  }
+  //shouldComponentUpdate返回true才会被执行。
+  UNSAFE_componentWillUpdate(){
+    console.log('2-componentWillUpdate---组件更新前，shouldComponentUpdate函数之后执行')
+  }
 
+  componentDidUpdate(){
+    console.log('4-componentDidUpdate----组件更新之后执行')
+  }
 
+  // componentWillReceiveProps(){
+  //   console.log('componentWillReceiveProps---父组件触发')
+  // }
 
 
 
   inputChange(e) {
-    console.log(e.target.value, "哈哈");
+    console.log("input改变的时候",e.target.value );
     this.setState({
       inputValue: this.input.value
     });
   }
   addList() {
+    // let list=JSON.parse(JSON.stringify([...this.state.list, this.state.inputValue]))
     this.setState({
       list: [...this.state.list, this.state.inputValue]
     },()=>{
       console.log(this.ul.querySelectorAll("div").length);
     });
+
+    // this.state.fileName
+    this.setState({
+      fileName:"《爱有来生》"+Math.random()
+    })
 
   }
   deleteItem(index) {
