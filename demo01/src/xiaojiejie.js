@@ -8,7 +8,7 @@ export class xiaojiejie extends Component {
     super(props, context);
     this.state = {
       inputValue: "", // input中的值
-      list: ["服务1", "服务22"] ,//服务列表
+      list: [] ,//服务列表
       fileName:"《爱有来生》"
     };
   }
@@ -62,6 +62,9 @@ export class xiaojiejie extends Component {
     // 请求数据的阶段：
     axios.get("http://yapi.demo.qunar.com/mock/48192/api/index").then(res=>{
       console.log('axios 获取数据成功:',res);
+      this.setState({
+        list:["大秦帝国","走向共和","人间正道是沧桑"]
+      })
 
     }).catch(err=>{
       console.log('axios 获取数据失败:',err);
