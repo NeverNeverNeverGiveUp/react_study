@@ -60,7 +60,7 @@ export class xiaojiejie extends Component {
   componentDidMount(){
     // console.log('componentDidMount----组件挂载完成的时刻执行')
     // 请求数据的阶段：
-    axios.post("https://web-api.juejin.im/v3/web/wbbr/bgeda").then(res=>{
+    axios.get("http://yapi.demo.qunar.com/mock/48192/api/index").then(res=>{
       console.log('axios 获取数据成功:',res);
 
     }).catch(err=>{
@@ -68,10 +68,13 @@ export class xiaojiejie extends Component {
       
     })
   }
-  shouldComponentUpdate(){
-    // console.log('1-shouldComponentUpdate---组件发生改变前执行')
-    // 它要求返回一个布尔类型的结果，必须有返回值，这里就直接返回一个true了（真实开发中，这个是有大作用的）。
-    return true
+  // shouldComponentUpdate(){
+  //   // console.log('1-shouldComponentUpdate---组件发生改变前执行')
+  //   // 它要求返回一个布尔类型的结果，必须有返回值，这里就直接返回一个true了（真实开发中，这个是有大作用的）。
+  //   return true
+  // }
+  getDerivedFromProps(){
+    
   }
   //shouldComponentUpdate返回true才会被执行。
   UNSAFE_componentWillUpdate(){
