@@ -1,5 +1,6 @@
 import React, { Component,Fragment } from 'react';
 // import PropTypes from 'prop-types';
+import { CSSTransition } from 'react-transition-group'
 
 
 class Boss extends Component {
@@ -16,7 +17,14 @@ class Boss extends Component {
     render() {
         return (
             <Fragment>
-                <div className={this.state.isShow?'show':'hide'}>boss人物-孙悟空</div>
+                <CSSTransition 
+                    in={this.state.isShow}   //用于判断是否出现的状态
+                    timeout={2000}           //动画持续时间
+                    classNames="boss-text"   //className值，防止重复
+                    unmountOnExit
+                >
+                    <div>BOSS级人物-孙悟空</div>
+                </CSSTransition>
                 <div><button onClick={this.toToggle}>召唤boss</button></div>
             </Fragment>
         );

@@ -32,3 +32,5 @@ npm install -save-dev xxx：-save-dev的意思是将模块安装到项目目录�
 【遗留问题】：
 1、20节的声明周期中，componentWillReceiveProps在子组件中误触发，原因是最新的react中废弃了，换成最新的static getDerivedStateFromProps，报错：`getDerivedStateFromProps` but its initial state is undefined. This is not recommended. Instead, define the initial state by assigning an object to `this.state` in the constructor of `XiaojiejieItem`. This ensures that `getDerivedStateFromProps` arguments have a consistent shape.
 2、第22节不同，原因为子组件检测不到shouldComponentUpdate的触发
+3、26节和28节没看，动画，没什么用，等用到的的时候再看
+
