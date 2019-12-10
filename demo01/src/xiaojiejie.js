@@ -3,6 +3,7 @@ import "./style.css";
 import axios from 'axios';
 
 import XiaojiejieItem from './XiaojiejieItem';
+import Boss from './Boss'
 export class xiaojiejie extends Component {
   constructor(props, context) {
     super(props, context);
@@ -50,9 +51,14 @@ export class xiaojiejie extends Component {
              */}
              <XiaojiejieItem content={item} index={index} deleteItem={this.deleteItem.bind(this)} fileName={this.state.fileName}/>
              </Fragment>
+
+             
             );
           })}
         </ul>
+
+        <hr/>
+        <Boss></Boss>
       </Fragment>
     );
   }
