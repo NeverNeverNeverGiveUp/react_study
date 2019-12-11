@@ -1,3 +1,4 @@
+import {CHANGE_INPUT,ADD_ITEM,DEL_ITEM} from './actionTypes';
 const defaultState={
     inputValue : '',
     list:[
@@ -9,7 +10,7 @@ const defaultState={
 
 };  //默认数据
 
-import {CHANGE_INPUT,ADD_ITEM,DEL_ITEM} from './store/actionTypes';
+
 export default (state=defaultState,action)=>{
     console.log("reducer",state,action);
     
