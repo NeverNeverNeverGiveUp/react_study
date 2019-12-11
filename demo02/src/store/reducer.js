@@ -9,5 +9,14 @@ const defaultState={
 
 };  //默认数据
 export default (state=defaultState,action)=>{
+    console.log("reducer",state,action);
+    
+    if (action.type==="change-input-value") {
+        let newState=JSON.parse(JSON.stringify(state));
+        newState.inputValue=action.value;
+        return newState;
+    } else {
+        
+    }
     return state
 }

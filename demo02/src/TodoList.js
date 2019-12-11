@@ -13,12 +13,17 @@ class TodoList extends Component {
         super(props);
         console.log(store.getState());
         this.state=store.getState();
+        this.changeInputValue=this.changeInputValue.bind(this);
+        this.storeChange=this.storeChange.bind(this);
+        store.subscribe(this.storeChange);  //订阅Redux的状态
+
     }
     render() {
         return (
             <div>
                 <div>
-                    <Input placeholder={this.state.inputValue} style={{width:'200px',marginRight:"10px"}}></Input>
+                <div>{this.state.inputValue}</div>
+                    <Input placeholder={this.state.inputValue} style={{width:'200px',marginRight:"10px"}} onChange={this.changeInputValue}></Input>
                     <Button type="primary">增加</Button>
                 </div>
                 <div style={{marginTop:"10px",width:"300px"}}>
@@ -36,6 +41,21 @@ class TodoList extends Component {
                 </div>
             </div>
         );
+    }
+
+    changeInputValue(e){
+        console.log('====================================');
+        console.log(e.target.value);
+        console.log('====================================');
+        const action={
+            type:"change-input-value",
+            value:e.target.value
+        };
+        store.dispatch(action)
+    }
+
+    storeChange(){
+        this.setState(store.getState())
     }
 }
 
