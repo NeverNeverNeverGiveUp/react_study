@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import "antd/dist/antd.css";
 import { Input,Button,List } from 'antd';
 import store from "./store/index";
-
+import {CHANGE_INPUT,ADD_ITEM,DEL_ITEM} from './store/actionTypes'
 
 class TodoList extends Component {
     constructor(props) {
@@ -43,7 +43,7 @@ class TodoList extends Component {
     changeInputValue(e){
         console.log(e.target.value);
         const action={
-            type:"change-input-value",
+            type:CHANGE_INPUT,
             value:e.target.value
         };
         store.dispatch(action)
@@ -56,7 +56,7 @@ class TodoList extends Component {
     clickBtn(){
         console.log("点了");
         const action={
-            type:"addItem"
+            type:ADD_ITEM
         };
         store.dispatch(action)
     }
@@ -66,7 +66,7 @@ class TodoList extends Component {
         console.log(n);
         console.log('====================================');
         const action={
-            type:"delItem",
+            type:DEL_ITEM,
             index:n
         };
         store.dispatch(action)

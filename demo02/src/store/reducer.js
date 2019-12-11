@@ -8,19 +8,21 @@ const defaultState={
 
 
 };  //默认数据
+
+import {CHANGE_INPUT,ADD_ITEM,DEL_ITEM} from './store/actionTypes';
 export default (state=defaultState,action)=>{
     console.log("reducer",state,action);
     
-    if (action.type==="change-input-value") {
+    if (action.type===CHANGE_INPUT) {
         let newState=JSON.parse(JSON.stringify(state));
         newState.inputValue=action.value;
         return newState;
-    } else if(action.type==="addItem"){
+    } else if(action.type===ADD_ITEM){
         let newState=JSON.parse(JSON.stringify(state));
         newState.list.push( newState.inputValue);
         newState.inputValue="";
         return newState;
-    }else if (action.type==="delItem") {
+    }else if (action.type===DEL_ITEM) {
         let newState=JSON.parse(JSON.stringify(state));
         newState.list.splice(action.index,1)
         return newState;
