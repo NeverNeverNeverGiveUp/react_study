@@ -1,5 +1,5 @@
 const defaultState={
-    inputValue : 'Write Something',
+    inputValue : '',
     list:[
         '早上4点起床，锻炼身体',
         '中午下班游泳一小时'
@@ -15,8 +15,11 @@ export default (state=defaultState,action)=>{
         let newState=JSON.parse(JSON.stringify(state));
         newState.inputValue=action.value;
         return newState;
-    } else {
-        
+    } else if(action.type==="addItem"){
+        let newState=JSON.parse(JSON.stringify(state));
+        newState.list.push( newState.inputValue);
+        newState.inputValue="";
+        return newState;
     }
     return state
 }
