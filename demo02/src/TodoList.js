@@ -3,11 +3,7 @@ import "antd/dist/antd.css";
 import { Input,Button,List } from 'antd';
 import store from "./store/index";
 
-const data=[
-    '早8点开晨会，分配今天的开发工作',
-    '早9点和项目经理作开发需求讨论会',
-    '晚5:30对今日代码进行review'
-];
+
 class TodoList extends Component {
     constructor(props) {
         super(props);
@@ -15,6 +11,8 @@ class TodoList extends Component {
         this.state=store.getState();
         this.changeInputValue=this.changeInputValue.bind(this);
         this.clickBtn=this.clickBtn.bind(this);
+        // this.delItem=this.delItem.bind(this);
+
         this.storeChange=this.storeChange.bind(this);
         store.subscribe(this.storeChange);  //订阅Redux的状态
     }
@@ -29,8 +27,8 @@ class TodoList extends Component {
                     <List
                     bordered
                     dataSource={this.state.list}
-                    renderItem={item => (
-                        <List.Item>
+                    renderItem={(item,index) => (
+                        <List.Item onClick={this.delItem.bind(this,index)}>
                            {item}
                         </List.Item>
                       )}
@@ -61,6 +59,18 @@ class TodoList extends Component {
             type:"addItem"
         };
         store.dispatch(action)
+    }
+
+    delItem(n){
+        console.log('====================================');
+        console.log(n);
+        console.log('====================================');
+        const action={
+            type:"delItem",
+            index:n
+        };
+        store.dispatch(action)
+
     }
 }
 

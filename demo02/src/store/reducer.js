@@ -20,6 +20,10 @@ export default (state=defaultState,action)=>{
         newState.list.push( newState.inputValue);
         newState.inputValue="";
         return newState;
+    }else if (action.type==="delItem") {
+        let newState=JSON.parse(JSON.stringify(state));
+        newState.list.splice(action.index,1)
+        return newState;
     }
     return state
 }
