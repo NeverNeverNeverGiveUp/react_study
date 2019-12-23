@@ -1,6 +1,6 @@
 import {CHANGE_INPUT,ADD_ITEM,DEL_ITEM} from './actionTypes';
 
-export const changInputValue=(value)=>({
+export const changeInputAction=(value)=>({
     type:CHANGE_INPUT,
     value
 })

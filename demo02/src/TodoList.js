@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import "antd/dist/antd.css";
-import { Input,Button,List } from 'antd';
 import store from "./store/index";
 // import {CHANGE_INPUT,ADD_ITEM,DEL_ITEM} from './store/actionTypes';
-import {changInputValue,addItemAction,deleteItemAction  } from './store/actionCreators';
+import {changeInputAction,addItemAction,deleteItemAction  } from './store/actionCreators';
+import TodoListUI from "./TodoListUI";
 
 
 class TodoList extends Component {
@@ -13,38 +12,26 @@ class TodoList extends Component {
         this.state=store.getState();
         this.changeInputValue=this.changeInputValue.bind(this);
         this.clickBtn=this.clickBtn.bind(this);
-        // this.delItem=this.delItem.bind(this);
+        this.delItem=this.delItem.bind(this);
 
         this.storeChange=this.storeChange.bind(this);
         store.subscribe(this.storeChange);  //订阅Redux的状态
     }
     render() {
         return (
-            <div>
-                <div>
-                    <Input value={this.state.inputValue} placeholder="请输入内容" style={{width:'200px',marginRight:"10px"}} onChange={this.changeInputValue}></Input>
-                    <Button type="primary" onClick={this.clickBtn}>增加</Button>
-                </div>
-                <div style={{marginTop:"10px",width:"300px"}}>
-                    <List
-                    bordered
-                    dataSource={this.state.list}
-                    renderItem={(item,index) => (
-                        <List.Item onClick={this.delItem.bind(this,index)}>
-                           {item}
-                        </List.Item>
-                      )}
-                    />
-                    
-                
-                </div>
-            </div>
+            <TodoListUI
+            inputValue={this.state.inputValue}
+            list={this.state.list}
+            changeInputValue={this.changeInputValue}
+            clickBtn={this.clickBtn}
+            delItem={this.delItem}
+            />
         );
     }
 
     changeInputValue(e){
         console.log(e.target.value);
-        const action=changInputValue(e.target.value);
+        const action=changeInputAction(e.target.value);
         store.dispatch(action)
     }
 
