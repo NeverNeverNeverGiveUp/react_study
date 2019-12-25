@@ -1,7 +1,9 @@
-import {createStore} from 'redux';
+import {createStore,applyMiddleware,compose } from 'redux';
+import thunk from "redux-thunk";
 import reducer from './reducer';
-const store=createStore(reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()   // 创建数据存储仓库,这句话的意思就是看window里有没有这个方法，有则执行这个方法（不要被大写的方法名吓到）。
-    );
+const composeEnhancers =   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}):compose ;
+const enhancer = composeEnhancers(applyMiddleware(thunk))
+const store=createStore(reducer,enhancer);
 
 export default store;

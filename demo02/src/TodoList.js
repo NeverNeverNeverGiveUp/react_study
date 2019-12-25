@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import store from "./store/index";
 // import {CHANGE_INPUT,ADD_ITEM,DEL_ITEM} from './store/actionTypes';
-import {changeInputAction,addItemAction,deleteItemAction,getListAction  } from './store/actionCreators';
+import {changeInputAction,addItemAction,deleteItemAction,getListAction,getTodoList  } from './store/actionCreators';
 import TodoListUI from "./TodoListUI";
-import axios from "axios";
+// import axios from "axios";
 
 class TodoList extends Component {
     constructor(props) {
@@ -63,11 +63,22 @@ class TodoList extends Component {
     }
 
     componentDidMount(){
-        axios.get("https://mock.yonyoucloud.com/mock/3316/react/react-list").then(res=>{
-            console.log("点了",res);
-            const action=getListAction(res.data.data);
+        // axios.get("https://mock.yonyoucloud.com/mock/3316/react/react-list").then(res=>{
+        //     console.log("点了",res);
+        //     const action=getListAction(res.data.data);
+        //     store.dispatch(action)
+        // })
+        // const action=getTodoList((data)=>{
+        //     debugger
+        //     store.dispatch(action)
+        // });
+        getTodoList((data)=>{
+            debugger
+            const action=getListAction(data);
             store.dispatch(action)
         })
+        
+        
     }
 }
 
