@@ -9,7 +9,7 @@ class TodoList extends Component {
     constructor(props) {
         super(props);
         console.log(store.getState());
-        this.state=store.getState();
+        this.state=store.getState();  //取出store中的数据到当前组件中
         this.changeInputValue=this.changeInputValue.bind(this);
         this.clickBtn=this.clickBtn.bind(this);
         this.delItem=this.delItem.bind(this);
@@ -50,6 +50,7 @@ class TodoList extends Component {
     }
 
     delItem(n){
+        debugger
         // console.log('====================================');
         // console.log(n);
         // console.log('====================================');

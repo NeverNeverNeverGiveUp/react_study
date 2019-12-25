@@ -1,6 +1,6 @@
 import {CHANGE_INPUT,ADD_ITEM,DEL_ITEM} from './actionTypes';
 const defaultState={
-    inputValue : '',
+    inputValue : '哈哈',
     list:[
         '早上4点起床，锻炼身体',
         '中午下班游泳一小时'
