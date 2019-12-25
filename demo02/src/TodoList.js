@@ -50,7 +50,6 @@ class TodoList extends Component {
     }
 
     delItem(n){
-        debugger
         // console.log('====================================');
         // console.log(n);
         // console.log('====================================');
