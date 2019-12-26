@@ -2,7 +2,8 @@ import {
     CHANGE_INPUT,
     ADD_ITEM,
     DEL_ITEM,
-    GET_LIST
+    GET_LIST,
+    GET_MY_LIST
 } from './actionTypes';
 import axios from "axios";
 
@@ -37,3 +38,8 @@ export const getTodoList = () => {
     }
 
 }
+
+export const getMyListAction = (data) => ({
+    type: GET_MY_LIST,
+    data
+})

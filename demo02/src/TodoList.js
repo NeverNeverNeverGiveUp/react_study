@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import store from "./store/index";
 // import {CHANGE_INPUT,ADD_ITEM,DEL_ITEM} from './store/actionTypes';
-import {changeInputAction,addItemAction,deleteItemAction,getTodoList  } from './store/actionCreators';
+import {changeInputAction,addItemAction,deleteItemAction,getTodoList,getMyListAction  } from './store/actionCreators';
 import TodoListUI from "./TodoListUI";
 // import axios from "axios";
 
@@ -63,8 +63,14 @@ class TodoList extends Component {
     }
 
     componentDidMount(){
-        const action=getTodoList();
+        // const action=getTodoList();
+        // store.dispatch(action);
+
+        const action=getMyListAction();
         store.dispatch(action);
+        console.log("action",action);
+
+
     }
 }
 
